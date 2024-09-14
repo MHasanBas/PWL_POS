@@ -4,9 +4,9 @@
 
 # Job Sheet 3 PWL_2024 tentang Migration database
 
-## Lokai DATABASE ada di folder "databse Jobsheet"
+## Lokasi DATABASE ada di folder "database Jobsheet"
 
-<img src ="lokasi.png">
+<img src ="1.png">
 
 
 
