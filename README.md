@@ -2,7 +2,7 @@
 ### NIM   : 2241760139
 ### Kelas : SIB-3A
 
-# Job Sheet 3 PWL_2024 tentang Migration database
+# JobSheet 3 PWL_2024 tentang Migration database
 
 ## Lokasi DATABASE ada di folder "database Jobsheet"
 
