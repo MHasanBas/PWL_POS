@@ -1,10 +1,12 @@
 ### Nama  : M. Hasan Basri
 ### NIM   : 2241760139
-### Kelas : SIB-2C
+### Kelas : SIB-3A
 
 # Job Sheet 3 PWL_2024 tentang Migration database
 
+## Lokai DATABASE ada di folder "databse Jobsheet"
 
+<img src ="lokasi.png">
 
 
 
