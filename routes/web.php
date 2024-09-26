@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\Route;
 // Keep this route to point to the WelcomeController
 Route::get('/', [WelcomeController::class, 'index']);
 
+
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/list', [UserController::class, 'list']);
+    Route::get('/create', [UserController::class, 'create']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show']);
+    Route::get('/{id}/edit', [UserController::class, 'edit']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
+
 // User routes
 Route::get('/user/tambah', [UserController::class, 'tambah']);
 Route::put('user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
