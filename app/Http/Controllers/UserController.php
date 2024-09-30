@@ -11,6 +11,8 @@ use Illuminate\Database\QueryException;
 
 class UserController extends Controller
 {
+  
+  // JS 5
     public function index()
     {
         $breadcrumb = (object) [

@@ -34,6 +34,15 @@ placeholder="Search" aria-label="Search">
           <i class="nav-icon far fa-user"></i> 
           <p>Data User</p> 
         </a> 
+      </li>
+      <li class="nav-header">Data Barang</li>
+      <li class="nav-item">
+          <a href="{{ url('/supplier') }}" class="nav-link {{ ($activeMenu ==
+          'supplier')? 'active' : '' }} ">
+              <i class="nav-icon fa fa-truck"></i>
+              <p>Supplier</p>
+          </a>
+      </li>
       </li> 
       <li class="nav-header">Data Barang</li> 
       <li class="nav-item"> 
