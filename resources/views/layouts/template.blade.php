@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
+{{-- SweetAlert2 --}}
+<Link rel="stylesheet href={{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('adminlte/dist/css/adminlte.min.css') }}">
   @stack('css')   <!-- Memanggil file css -->
@@ -73,6 +76,15 @@
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colvis.min.js') }}"></script>
+
+
+{{-- jquery-validation --}}
+<script src="{{ asset('adminlte/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('plugin/jquery-validaion/additional-methods.min.js') }}"></script>
+
+{{-- sweetAlert2 --}}
+<script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script>
   $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
