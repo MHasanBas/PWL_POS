@@ -41,8 +41,8 @@ Route::group(['prefix' => 'user'], function() {
 });
 
 
-// Route::group(['prefix' => 'level'], function() {
 Route::middleware(['authorize:ADM'])->group(function () {
+    Route::group(['prefix' => 'level'], function () {
     Route::get('/', [LevelController::class, 'index']);             
     Route::post('/list', [LevelController::class, 'list']);         
     Route::get('/create', [LevelController::class, 'create']);      
@@ -57,6 +57,7 @@ Route::middleware(['authorize:ADM'])->group(function () {
     Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']); 
     Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); 
     Route::delete('/{id}', [LevelController::class, 'destroy']);     
+});
 });
 
 Route::group(['prefix' => 'kategori'], function() {
@@ -75,7 +76,8 @@ Route::group(['prefix' => 'kategori'], function() {
     Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // Untuk hapus data kategori Ajax
     Route::delete('/{id}', [KategoriController::class, 'destroy']);     // menghapus data kategori
 });
-Route::group(['prefix' => 'barang'], function() {
+Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
+    Route::group(['prefix' => 'barang'], function () {
     Route::get('/', [BarangController::class, 'index']);              // menampilkan halaman awal barang
     Route::post('/list', [BarangController::class, 'list']);          // menampilkan data barang dalam bentuk json untuk datatables
     Route::get('/create', [BarangController::class, 'create']);       // menampilkan halaman form tambah barang
@@ -90,6 +92,7 @@ Route::group(['prefix' => 'barang'], function() {
     Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // Untuk tampilkan form confirm delete barang Ajax
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // Untuk hapus data barang Ajax
     Route::delete('/{id}', [BarangController::class, 'destroy']);     // menghapus data barang
+});
 });
 Route::group(['prefix' => 'supplier'], function() {
     Route::get('/', [SupplierController::class, 'index']);              // menampilkan halaman awal supplier
