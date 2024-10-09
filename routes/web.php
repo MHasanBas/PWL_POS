@@ -23,7 +23,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
 Route::group(['prefix' => 'user'], function() {
     Route::get('/', [UserController::class, 'index']);              // menampilkan halaman awal user
     Route::post('/list', [UserController::class, 'list']);          // menampilkan data user dalam bentuk json untuk datatables
@@ -40,6 +39,7 @@ Route::group(['prefix' => 'user'], function() {
     Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // Untuk hapus data user Ajax
     Route::delete('/{id}', [UserController::class, 'destroy']);     // menghapus data user
 });
+
 
 Route::group(['prefix' => 'level'], function() {
     Route::get('/', [LevelController::class, 'index']);             

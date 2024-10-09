@@ -74,6 +74,12 @@ placeholder="Search" aria-label="Search">
           <p>Transaksi Penjualan</p> 
         </a> 
       </li> 
+      <li class="nav-item">
+        <a href="{{ url('/logout') }}" class="nav-link {{ $activeMenu == 'penjualan' ? 'active' : '' }} ">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
+            <p>Logout</p>
+        </a>
+    </li>
     </ul> 
   </nav> 
 </div> 
