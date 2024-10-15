@@ -15,7 +15,7 @@ class UserModel extends Authenticatable
     protected $primaryKey = 'user_id';  // Mendfinisikan primary key dari tabel yang digunakan
     protected $fillable = ['username', 'password', 'nama', 'level_id','created_at', 'updated_at'];
     protected $hidden = ['password'];
-    protected $casts = ['password' => 'hashed'];
+    // protected $casts = ['password' => 'hashed'];
 
 
     public function level() : BelongsTo
@@ -27,7 +27,7 @@ class UserModel extends Authenticatable
  */
 public function getRoleName(): string
 {
-    return $this->level->level_nama;
+    return $this->level->level_name;
 }
 
 /*
