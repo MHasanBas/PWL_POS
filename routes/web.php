@@ -14,11 +14,8 @@ Route::pattern('id', '[0-9]+');
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
-
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'postRegister']);
-
-
 Route::get('logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
@@ -101,7 +98,11 @@ Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
     Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']); // Menyimpan perubahan data barang Ajax
     Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // Untuk tampilkan form confirm delete barang Ajax
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // Untuk hapus data barang Ajax
-    Route::delete('/{id}', [BarangController::class, 'destroy']);     // menghapus data barang
+    Route::get('/import', [BarangController::class, 'import']);
+    Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
+    Route::get('/export_excel', [BarangController::class, 'export_excel']);
+    Route::get('/export_pdf', [BarangController::class, 'export_pdf']);
+    Route::delete('/{id}', [BarangController::class, 'destroy']);
 });
 });
 
