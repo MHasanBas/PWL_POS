@@ -7,6 +7,7 @@ use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Database\QueryException;
 use App\Http\Controllers\LevelModel;
 use Illuminate\Support\Facades\Validator;
@@ -287,6 +288,18 @@ class UserController extends Controller
              }
          }
          return redirect('/');
+     }
+     public function export_pdf()
+     {
+         $user = UserModel::select('level_id', 'username', 'nama')
+             ->get();
+ 
+         $pdf = Pdf::loadView('user.export_pdf', ['user' => $user]);
+         $pdf->setPaper('a4', 'potrait');
+         $pdf->setOption('isRemoteEnabled', true);
+         $pdf->render();
+ 
+         return $pdf->stream('Data User' . date('Y-m-d H:i:s') . '.pdf');
      }
  }
 
