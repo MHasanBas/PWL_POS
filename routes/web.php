@@ -8,6 +8,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 
 Route::pattern('id', '[0-9]+');
@@ -17,6 +18,9 @@ Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'postRegister']);
 Route::get('logout', [AuthController::class, 'logout']);
+
+Route::get('/profile', [ProfileController::class, 'index']);
+    Route::post('upload_foto', [ProfileController::class, 'upload_foto'])->name('upload.foto');
 
 Route::middleware(['auth'])->group(function () {
     //masukkan
