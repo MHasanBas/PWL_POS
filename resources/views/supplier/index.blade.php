@@ -69,7 +69,7 @@
                     // searchable: true, jika ingin kolom ini bisa dicari 
                     searchable: true
                 }, {
-                    data: "suplier_nama",
+                    data: "supplier_nama",
                     className: "",
                     orderable: true,
                     searchable: true

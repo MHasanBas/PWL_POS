@@ -28,7 +28,7 @@ class SupplierController extends Controller
 
     public function list(Request $request)
     {
-        $supplier = SupplierModel::select('supplier_id', 'supplier_kode', 'suplier_nama', 'supplier_alamat');
+        $supplier = SupplierModel::select('supplier_id', 'supplier_kode', 'supplier_nama', 'supplier_alamat');
 
         return DataTables::of($supplier)
             ->addIndexColumn()
@@ -67,13 +67,13 @@ class SupplierController extends Controller
     public function store (Request $request) {
         $request->validate([
             'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode',
-            'suplier_nama' => 'required|string|max:100',
+            'supplier_nama' => 'required|string|max:100',
             'supplier_alamat' => 'required|string|max:225'
         ]);
 
         SupplierModel::create([
             'supplier_kode' => $request->supplier_kode,
-            'suplier_nama' => $request->suplier_nama,
+            'supplier_nama' => $request->supplier_nama,
             'supplier_alamat' => $request->supplier_alamat
         ]);
 
@@ -117,13 +117,13 @@ class SupplierController extends Controller
     public function update(Request $request, string $id) {
         $request->validate([
             'supplier_kode' => 'required|string|min:3|unique:m_supplier,supplier_kode',
-            'suplier_nama' => 'required|string|max:100',
+            'supplier_nama' => 'required|string|max:100',
             'supplier_alamat' => 'required|string|max:225'
         ]);
 
         SupplierModel::find($id)->update([
             'supplier_kode' => $request->supplier_kode,
-            'suplier_nama' => $request->suplier_nama,
+            'supplier_nama' => $request->supplier_nama,
             'supplier_alamat' => $request->supplier_alamat
         ]);
 
@@ -158,7 +158,7 @@ class SupplierController extends Controller
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'supplier_kode' => 'required|string|min:3|max:10|unique:m_supplier,supplier_kode',
-                'suplier_nama' => 'required|string|max: 100',
+                'supplier_nama' => 'required|string|max: 100',
                 'supplier_alamat' => 'required|string|max: 255', // alamat harus diisi, berupa string, dan maksimal 255 karakter
             ];
             // use Illuminate\Support\Facades\Validator;
@@ -192,7 +192,7 @@ class SupplierController extends Controller
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'supplier_kode' => 'required|max:10|unique:m_supplier,supplier_kode,' . $id . ',supplier_id',
-                'suplier_nama' => 'required|max:100',
+                'supplier_nama' => 'required|max:100',
                 'supplier_alamat' => 'required|string|max: 255',
             ];
             // use Illuminate\Support\Facades\Validator;
@@ -249,7 +249,7 @@ class SupplierController extends Controller
     }
     public function export_pdf()
     {
-        $supplier = SupplierModel::select('supplier_kode', 'suplier_nama', 'supplier_alamat')
+        $supplier = SupplierModel::select('supplier_kode', 'supplier_nama', 'supplier_alamat')
             ->get();
 
         $pdf = Pdf::loadView('supplier.export_pdf', ['supplier' => $supplier]);

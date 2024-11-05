@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "phpoffice/phpspreadsheet": "^3.3",
+        "tymon/jwt-auth": "2.1.1",
         "yajra/laravel-datatables": "10.0"
     },
     "require-dev": {

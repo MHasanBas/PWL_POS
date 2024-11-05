@@ -32,7 +32,7 @@ class LevelModel extends Model
 
 // protected $fillable = [
 //     'level_kode',
-//     'level_name'
+//     'level_nama'
 // ];
 // }
 use HasFactory;
@@ -40,7 +40,7 @@ use HasFactory;
 protected $table = 'm_level'; //Mendefinisikan nama tabel yang digunakan oleh model ini
 protected $primaryKey = 'level_id'; //Mendefinisikan primary key dari tabel yang digunakan
 
-protected $fillable = ['level_kode', 'level_name'];
+protected $fillable = ['level_kode', 'level_nama'];
 
 public function user(): HasMany {
     return $this->hasMany(UserModel::class, 'level_id', 'level_id');

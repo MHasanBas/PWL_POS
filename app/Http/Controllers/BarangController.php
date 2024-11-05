@@ -28,7 +28,7 @@ class BarangController extends Controller
 
     public function list(Request $request)
     {
-        $barang = BarangModel::select('barang_id', 'barang_kode', 'barang_name', 'harga_beli', 'harga_jual', 'kategori_id')
+        $barang = BarangModel::select('barang_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual', 'kategori_id')
                     ->with('kategori');
 
         $kategori_id = $request->input('filter_kategori');
@@ -76,7 +76,7 @@ class BarangController extends Controller
     public function store (Request $request) {
         $request->validate([
             'barang_kode' => 'required|string|min:3|unique:m_barang,barang_kode',
-            'barang_name' => 'required|string|max:100',
+            'barang_nama' => 'required|string|max:100',
             'harga_beli' => 'required|integer',
             'harga_jual' => 'required|integer',
             'kategori_id' => 'required|integer'
@@ -84,7 +84,7 @@ class BarangController extends Controller
 
         BarangModel::create([
             'barang_kode' => $request->barang_kode,
-            'barang_name' => $request->barang_name,
+            'barang_nama' => $request->barang_nama,
             'harga_beli' => $request->harga_beli,
             'harga_jual' => $request->harga_jual,
             'kategori_id' => $request->kategori_id
@@ -132,7 +132,7 @@ class BarangController extends Controller
     public function update(Request $request, string $id) {
         $request->validate([
             'barang_kode' => 'required|string|min:3|unique:m_barang,barang_kode',
-            'barang_name' => 'required|string|max:100',
+            'barang_nama' => 'required|string|max:100',
             'harga_beli' => 'required|integer',
             'harga_jual' => 'required|integer',
             'kategori_id' => 'required|integer'
@@ -140,7 +140,7 @@ class BarangController extends Controller
 
         BarangModel::find($id)->update([
             'barang_kode' => $request->barang_kode,
-            'barang_name' => $request->barang_name,
+            'barang_nama' => $request->barang_nama,
             'harga_beli' => $request->harga_beli,
             'harga_jual' => $request->harga_jual,
             'kategori_id' => $request->kategori_id
@@ -172,13 +172,20 @@ class BarangController extends Controller
                     ->with('kategori', $kategori);
     }
 
+    public function show_ajax(string $id)
+    {
+        $barang = BarangModel::with('kategori')->find($id);
+
+        return view('barang.show_ajax', ['barang' => $barang]);
+    }
+
     public function store_ajax(Request $request) {
         //cek apakah request berupa ajax
         if($request->ajax() || $request->wantsJson()) {
             $rules = [
                 'kategori_id' => ['required', 'integer', 'exists:m_kategori,kategori_id'],
                 'barang_kode' => ['required', 'min:3', 'max:20', 'unique:m_barang,barang_kode'],
-                'barang_name' => ['required', 'string', 'max:100'],
+                'barang_nama' => ['required', 'string', 'max:100'],
                 'harga_beli' => ['required', 'numeric'],
                 'harga_jual' => ['required', 'numeric'],
             ];
@@ -216,7 +223,7 @@ class BarangController extends Controller
             $rules = [
                 'kategori_id' => ['required', 'integer', 'exists:m_kategori,kategori_id'],
                 'barang_kode' => ['required', 'min:3', 'max:20', 'unique:m_barang,barang_kode, '. $id .',barang_id'],
-                'barang_name' => ['required', 'string', 'max:100'],
+                'barang_nama' => ['required', 'string', 'max:100'],
                 'harga_beli' => ['required', 'numeric'],
                 'harga_jual' => ['required', 'numeric'],
                 ];
@@ -314,7 +321,7 @@ class BarangController extends Controller
                         $insert[] = [
                             'kategori_id' => $value['A'],
                             'barang_kode' => $value['B'],
-                            'barang_name' => $value['C'],
+                            'barang_nama' => $value['C'],
                             'harga_beli' => $value['D'],
                             'harga_jual' => $value['E'],
                             'created_at' => now(),
@@ -344,7 +351,7 @@ class BarangController extends Controller
     public function export_excel()
     {
         //ambil data barang yang akan di export
-        $barang = BarangModel::select('kategori_id', 'barang_kode', 'barang_name', 'harga_beli', 'harga_jual')
+        $barang = BarangModel::select('kategori_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual')
             ->orderBy('kategori_id')
             ->with('kategori')
             ->get();
@@ -367,7 +374,7 @@ class BarangController extends Controller
         foreach ($barang as $key => $value) {
             $sheet->setCellValue('A' . $baris, $no);
             $sheet->setCellValue('B' . $baris, $value->barang_kode);
-            $sheet->setCellValue('C' . $baris, $value->barang_name);
+            $sheet->setCellValue('C' . $baris, $value->barang_nama);
             $sheet->setCellValue('D' . $baris, $value->harga_beli);
             $sheet->setCellValue('E' . $baris, $value->harga_jual);
             $sheet->setCellValue('F' . $baris, $value->kategori->kategori_nama); // ambil nama kategori
@@ -400,19 +407,17 @@ class BarangController extends Controller
         // end function export_excel
     }
 
-    public function export_pdf() {
-        $barang = BarangModel::select('kategori_id', 'barang_name', 'harga_beli', 'harga_jual')
-                ->orderBy('kategori_id')
-                ->orderBy('barang_kode')
-                ->with('kategori')
-                ->get();
-
-        // use Barryvdh\DomPDF\Facade\PDF;
+    public function export_pdf()
+    {
+        $barang = BarangModel::select('kategori_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual')
+        ->orderBy('kategori_id')
+        ->orderBy('barang_kode')
+        ->with('kategori')
+        ->get();
         $pdf = Pdf::loadView('barang.export_pdf', ['barang' => $barang]);
-        $pdf->setPaper('a4', 'portrait'); // set ukuran kertas dan orientasi
-        $pdf->setOption("isRemoteEnabled", true); // set true jika ada gambar dari url
+        $pdf->setPaper('a4', 'portrait');
+        $pdf->setOption("isRemoteEnabled", true);
         $pdf->render();
-
         return $pdf->stream('Data Barang '.date('Y-m-d H:i:s').'.pdf');
     }
 }

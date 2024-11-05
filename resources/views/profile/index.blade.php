@@ -25,26 +25,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="profile-image-container">
-                            <img class="profile-user-img img-fluid img-circle"
-                                @if (file_exists(public_path(
-                                            'storage/uploads/profile_pictures/' .
-                                                auth()->user()->username .
-                                                '/' .
-                                                auth()->user()->username .
-                                                '_profile.png'))) src="{{ asset('storage/uploads/profile_pictures/' . auth()->user()->username . '/' . auth()->user()->username . '_profile.png') }}" @endif
-                                @if (file_exists(public_path(
-                                            'storage/uploads/profile_pictures/' .
-                                                auth()->user()->username .
-                                                '/' .
-                                                auth()->user()->username .
-                                                '_profile.jpg'))) src="{{ asset('storage/uploads/profile_pictures/' . auth()->user()->username . '/' . auth()->user()->username . '_profile.jpg') }}" @endif
-                                @if (file_exists(public_path(
-                                            'storage/uploads/profile_pictures/' .
-                                                auth()->user()->username .
-                                                '/' .
-                                                auth()->user()->username .
-                                                '_profile.jpeg'))) src="{{ asset('storage/uploads/profile_pictures/' . auth()->user()->username . '/' . auth()->user()->username . '_profile.jpeg') }}" @endif
-                                alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" src="{{ route('profil.avatar') }}" alt="User profile picture">
                             <form action="{{ route('upload.foto') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" id="upload_foto" name="foto" accept="image/*">
@@ -54,7 +35,7 @@
                         </div>
 
                         <h3 class="profile-username text-center">{{ auth()->user()->nama }}</h3>
-                        <p class="text-muted text-center"> {{ auth()->user()->level->level_name }} </p>
+                        <p class="text-muted text-center"> {{ auth()->user()->level->level_nama }} </p>
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
                                 <b>Username</b> <a class="float-right"
@@ -66,7 +47,7 @@
                             </li>
                             <li class="list-group-item">
                                 <b>Tingkat Level</b> <a class="float-right"
-                                    style="pointer-events: none; color:black">{{ auth()->user()->level->level_name }}</a>
+                                    style="pointer-events: none; color:black">{{ auth()->user()->level->level_nama }}</a>
                             </li>
                         </ul>
 

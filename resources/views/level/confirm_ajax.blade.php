@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <th class="text-right col-3">Nama Level :</th>
-                            <td class="col-9">{{ $level->level_name }}</td>
+                            <td class="col-9">{{ $level->level_nama }}</td>
                         </tr>
                     </table>
                 </div>

@@ -42,7 +42,7 @@
                         </tr>
                         <tr>
                             <th class="text-right col-3">Nama Barang :</th>
-                            <td class="col-9">{{ $barang->barang_name }}</td>
+                            <td class="col-9">{{ $barang->barang_nama }}</td>
                         </tr>
                         <tr>
                             <th class="text-right col-3">Harga Beli :</th>

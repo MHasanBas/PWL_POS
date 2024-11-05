@@ -72,7 +72,8 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}"></td>
+            <td width="15%" class="text-center">
+                {{-- <img src="{{ asset('polinema-bw.png') }}"></td> --}}
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                 PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -105,7 +106,7 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $b->barang_kode }}</td>
-                    <td>{{ $b->barang_name }}</td>
+                    <td>{{ $b->barang_nama }}</td>
                     <td class="text-right">{{ number_format($b->harga_beli, 0, ',', '.') }}</td>
                     <td class="text-right">{{ number_format($b->harga_jual, 0, ',', '.') }}</td>
                     <td>{{ $b->kategori->kategori_nama }}</td>

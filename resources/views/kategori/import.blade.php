@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label>Pilih File</label>
-                    <input type="file" name="file_kategori" id="file_kategori" class="form-control" required>
+                    <input type="file" name="file_kategori" id="file_kategori" class="form-control">
                     <small id="error-file_kategori" class="error-text form-text text-danger"></small>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                                 title: 'Berhasil',
                                 text: response.message
                             });
-                            tableKategori.ajax.reload(); // reload datatable
+                            dataKategori.ajax.reload(); // reload datatable
                         } else { // jika error
                             $('.error-text').text('');
                             $.each(response.msgField, function(prefix, val) {

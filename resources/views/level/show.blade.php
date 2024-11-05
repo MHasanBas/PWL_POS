@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>{{ $level->level_name }}</td>
+                        <td>{{ $level->level_nama }}</td>
                     </tr>
                 </table>
             @endempty

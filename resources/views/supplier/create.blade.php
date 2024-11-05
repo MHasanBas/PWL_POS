@@ -22,8 +22,8 @@
             <div class="form-group row">
                 <label class="col-1 control-label col-form-label">Nama</label>
                 <div class="col-11">
-                    <input type="text" class="form-control" id="suplier_nama" name="suplier_nama" value="{{ old('supplier_name') }}" required>
-                    @error('suplier_nama')
+                    <input type="text" class="form-control" id="supplier_nama" name="supplier_nama" value="{{ old('supplier_name') }}" required>
+                    @error('supplier_nama')
                         <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>

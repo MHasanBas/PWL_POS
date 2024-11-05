@@ -27,9 +27,9 @@
                 </div>
                 <div class="form-group">
                     <label>Nama Barang</label>
-                    <input value="" type="text" name="barang_name" id="barang_name" class="form-control"
+                    <input value="" type="text" name="barang_nama" id="barang_nama" class="form-control"
                         required>
-                    <small id="error-barang_name" class="error-text form-text text-danger"></small>
+                    <small id="error-barang_nama" class="error-text form-text text-danger"></small>
                 </div>
                 <div class="form-group">
                     <label>Harga Beli</label>
@@ -64,7 +64,7 @@
                     minlength: 3,
                     maxlength: 20
                 },
-                barang_name: {
+                barang_nama: {
                     required: true,
                     minlength: 3,
                     maxlength: 100

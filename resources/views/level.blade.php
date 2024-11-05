@@ -18,7 +18,7 @@
         <tr>
             <td>{{ $d->level_id }}</td>
             <td>{{ $d->level_kode }}</td>
-            <td>{{ $d->level_name }}</td>
+            <td>{{ $d->level_nama }}</td>
         </tr>
         @endforeach
     </table>

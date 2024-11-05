@@ -35,9 +35,9 @@
                     </div>
                     <div class="form-group">
                         <label>Nama Supplier</label>
-                        <input value="{{ $supplier->suplier_nama }}" type="text" name="suplier_nama" id="suplier_nama" class="form-control"
+                        <input value="{{ $supplier->supplier_nama }}" type="text" name="supplier_nama" id="supplier_nama" class="form-control"
                             required>
-                        <small id="error-suplier_nama" class="error-text form-text text-danger"></small>
+                        <small id="error-supplier_nama" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
                         <label>Alamat Supplier</label>
@@ -62,7 +62,7 @@
                         minlength: 3,
                         maxlength: 10
                     },
-                    suplier_nama: {
+                    supplier_nama: {
                         required: true,
                         minlength: 3,
                         maxlength: 100
