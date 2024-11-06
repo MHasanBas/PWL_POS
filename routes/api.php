@@ -20,12 +20,14 @@ use App\Http\Controllers\Api\BarangController;
 |
 */
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/login', [LoginController::class, '__invoke'])->name('login');
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::pattern('id', '[0-9]+'); // arti: ketika ada parameter {id}, maka harus berupa angka
+Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
+Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
+Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('name');
+Route::middleware('auth:api')->get('/user', function(Request $request){
     return $request->user();
 });
+Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
 // Route Level
 Route::get('levels', [LevelController::class, 'index']);
