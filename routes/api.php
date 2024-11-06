@@ -15,6 +15,8 @@ use App\Http\Controllers\Api\RegisterController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/login', [LoginController::class, '__invoke'])->name('login');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
